@@ -1,6 +1,6 @@
 import React from 'react';
 import styled,{css} from 'styled-components';
-
+import { lighten } from 'polished';
 
 const ButtonTotal = ({children,color,size,fullWidth}) => {
     //배경색변수
@@ -9,6 +9,9 @@ const ButtonTotal = ({children,color,size,fullWidth}) => {
         const selected = theme.palette[color];
         return css`
         background: ${selected};
+        &:hover {
+            background:${lighten(0.2,selected)}
+        }
         `;
     }}`;
     // 사이즈
@@ -36,7 +39,7 @@ const ButtonTotal = ({children,color,size,fullWidth}) => {
     width:${sizes[size].width};
     `}
     `;
-    
+    // 스타일컴포넌트
     const StyledButton = styled.button`
     
     /*공통스타일*/
@@ -67,9 +70,7 @@ const ButtonTotal = ({children,color,size,fullWidth}) => {
         width:100%; 
         `;
     }}
-    &:hover{
-        background:#1c7ed6
-    }
+   
     &+&{
         margin-left: 1em;
     }

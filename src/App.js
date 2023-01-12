@@ -1,8 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import  styled,{css, ThemeProvider}  from 'styled-components';
-import Circle from './component/Circle';
-import Button from './component/Button';
+import  styled,{ ThemeProvider}  from 'styled-components';
 import ButtonTotal from './component/ButtonTotal';
 
 const AppBlock = styled.div`
@@ -38,6 +35,7 @@ function App() {
           <ButtonTotal color="gray">Button</ButtonTotal>
           <ButtonTotal color="gray" size='small'>Button</ButtonTotal>
         </div>
+          <ButtonTotal fullWidth>Button</ButtonTotal>
       </AppBlock>
     </ThemeProvider>
   );

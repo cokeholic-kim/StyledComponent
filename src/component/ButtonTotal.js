@@ -2,7 +2,7 @@ import React from 'react';
 import styled,{css} from 'styled-components';
 import { lighten } from 'polished';
 
-const ButtonTotal = ({children,color,size,fullWidth}) => {
+const ButtonTotal = ({children,color,size,fullWidth,...res}) => {
     //배경색변수
     const colorStyle=css`
     ${({theme,color})=>{
@@ -77,7 +77,7 @@ const ButtonTotal = ({children,color,size,fullWidth}) => {
     `;
     
     return (
-        <StyledButton color={color} size={size} fullWidth={fullWidth}>{children}</StyledButton>
+        <StyledButton color={color} size={size} fullWidth={fullWidth} {...res}>{children}</StyledButton>
     );
 };
 

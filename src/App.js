@@ -1,6 +1,8 @@
 import './App.css';
-import  styled,{ ThemeProvider}  from 'styled-components';
+import  styled,{ ThemeProvider }  from 'styled-components';
 import ButtonTotal from './component/ButtonTotal';
+import Dialog from './component/Dialog';
+import { useState } from 'react';
 
 const AppBlock = styled.div`
 width:512px;
@@ -11,33 +13,58 @@ padding: 1em;
 `;
 
 function App() {
+  const[dialog,setDialog]=useState(false);
+  function onClick(){
+    setDialog(true);
+  }
+  const onConfirm = ()=>{
+    console.log('확인')
+    setDialog(false)
+  }
+  const onCancel = ()=>{
+    console.log('취소')
+    setDialog(false)
+  }
   return (
-    <ThemeProvider theme={{
-      palette:{
-        blue:'#228be6',
-        gray:'#495057',
-        pink:'#f06595'
-      }
-    }}>
-      <AppBlock>
-      <div>
-          <ButtonTotal size='large' >Button</ButtonTotal>
-          <ButtonTotal >Button</ButtonTotal>
-          <ButtonTotal  size='small'>Button</ButtonTotal>
-        </div>
+    
+      <ThemeProvider theme={{
+        palette:{
+          blue:'#228be6',
+          gray:'#495057',
+          pink:'#f06595'
+        }
+      }}>
+        <AppBlock>
         <div>
-          <ButtonTotal size='large' color="pink">Button</ButtonTotal>
-          <ButtonTotal color="pink">Button</ButtonTotal>
-          <ButtonTotal color="pink" size='small'>Button</ButtonTotal>
-        </div>
-        <div>
-          <ButtonTotal size='large' color="gray" >Button</ButtonTotal>
-          <ButtonTotal color="gray">Button</ButtonTotal>
-          <ButtonTotal color="gray" size='small'>Button</ButtonTotal>
-        </div>
-          <ButtonTotal fullWidth>Button</ButtonTotal>
-      </AppBlock>
-    </ThemeProvider>
+            <ButtonTotal size='large' >Button</ButtonTotal>
+            <ButtonTotal >Button</ButtonTotal>
+            <ButtonTotal  size='small'>Button</ButtonTotal>
+          </div>
+          <div>
+            <ButtonTotal size='large' color="pink">Button</ButtonTotal>
+            <ButtonTotal color="pink">Button</ButtonTotal>
+            <ButtonTotal color="pink" size='small'>Button</ButtonTotal>
+          </div>
+          <div>
+            <ButtonTotal size='large' color="gray" >Button</ButtonTotal>
+            <ButtonTotal color="gray">Button</ButtonTotal>
+            <ButtonTotal color="gray" size='small'>Button</ButtonTotal>
+          </div>
+          <div>
+            <ButtonTotal fullWidth>Button</ButtonTotal>
+          </div>
+          <div>
+            <ButtonTotal fullWidth color="pink" onClick={onClick}>삭제</ButtonTotal>
+          </div>
+        </AppBlock>
+        <Dialog title="정말로 삭제하시겠습니까"
+        confirmText="삭제"
+        cancelText="취소"
+        visible={dialog}
+        onConfirm={onConfirm}
+        onCancel={onCancel}
+        >데이터를 정말로 삭제하시겠습니까</Dialog>
+      </ThemeProvider>
   );
 }
 
